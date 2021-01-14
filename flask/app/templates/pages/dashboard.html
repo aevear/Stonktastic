@@ -1,0 +1,526 @@
+
+{% extends "layouts/default.html" %}
+
+{% block title %} Chart JS {% endblock title %}
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <img src="/static/assets/img/StonktasticLogo.png" alt="Stonktastic logo" width="100%", style="margin-left: auto; margin-right: auto; display: block;">
+  </div>
+</div>
+
+<div class="page-inner mt-2">
+    <!--
+    =============================
+      Line graph with SNP 500
+    =============================
+    -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">SNP 500</div>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+      <!--
+      =============================
+        Top 5 Chart
+      =============================
+      -->
+      <div class="row mt--2">
+        <div class="col-md-9">
+          <div class="card full-height">
+
+                <div class="card-header">
+                    <div class="card-title">Daily Percentage Change in Top 5 Stocks</div>
+                </div>
+
+                <div class="card-body">
+                    <div id="myChartLegend"></div>
+                    <div class="chart-container">
+                        <canvas id="htmlLegendsChart"></canvas>
+                    </div>
+
+                </div>
+
+                <!--
+                =============================
+                  Top 5 Chart Statistics
+                =============================
+                -->
+
+                <div class="card-header">
+                    <div class="card-title">Accuracy of Models for Top 5 Stocks</div>
+                </div>
+
+                <div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
+                  <div class="px-2 pb-2 pb-md-0 text-center">
+                    <div id="circles-1"></div>
+                    <h6 class="fw-bold mt-3 mb-0">{{ dashboardChart[0][0] }}</h6>
+                  </div>
+                  <div class="px-2 pb-2 pb-md-0 text-center">
+                    <div id="circles-2"></div>
+                    <h6 class="fw-bold mt-3 mb-0">{{ dashboardChart[1][0] }}</h6>
+                  </div>
+                  <div class="px-2 pb-2 pb-md-0 text-center">
+                    <div id="circles-3"></div>
+                    <h6 class="fw-bold mt-3 mb-0">{{ dashboardChart[2][0] }}</h6>
+                  </div>
+                  <div class="px-2 pb-2 pb-md-0 text-center">
+                    <div id="circles-4"></div>
+                    <h6 class="fw-bold mt-3 mb-0">{{ dashboardChart[3][0] }}</h6>
+                  </div>
+                  <div class="px-2 pb-2 pb-md-0 text-center">
+                    <div id="circles-5"></div>
+                    <h6 class="fw-bold mt-3 mb-0">{{ dashboardChart[4][0] }}</h6>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+      <!--
+      =============================
+        Side Table for Top 5 Stocks
+      =============================
+      -->
+      <div class="col-md-3">
+        <div class="card full-height">
+          <div class="card-header">
+            <div class="card-title">Yearly Gain using Stonktastic</div>
+          </div>
+          <div class="card-body pb-0">
+            <!--     -->
+            <div class="d-flex">
+              <div class="flex-1 pt-1 ml-2">
+                <h6 class="fw-bold mb-1">{{ stockDataList[0][1] }}</h6>
+                <small class="text-muted">{{ stockDataList[0][2] }}</small>
+              </div>
+              <div class="d-flex ml-auto align-items-center">
+                <h3 class="text-info fw-bold">+ {{totalValueDataList[0][1]}}%</h3>
+              </div>
+            </div>
+            <!--     -->
+            <div class="separator-dashed"></div>
+            <!--     -->
+            <div class="d-flex">
+              <div class="flex-1 pt-1 ml-2">
+                <h6 class="fw-bold mb-1">{{ stockDataList[1][1] }}</h6>
+                <small class="text-muted">{{ stockDataList[1][2] }}</small>
+              </div>
+              <div class="d-flex ml-auto align-items-center">
+                <h3 class="text-info fw-bold">+ {{totalValueDataList[1][1]}}%</h3>
+              </div>
+            </div>
+            <!--     -->
+            <div class="separator-dashed"></div>
+            <!--     -->
+            <div class="d-flex">
+              <div class="flex-1 pt-1 ml-2">
+                <h6 class="fw-bold mb-1">{{ stockDataList[2][1] }}</h6>
+                <small class="text-muted">{{ stockDataList[2][2] }}</small>
+              </div>
+              <div class="d-flex ml-auto align-items-center">
+                <h3 class="text-info fw-bold">+ {{totalValueDataList[2][1]}}%</h3>
+              </div>
+            </div>
+            <!--     -->
+            <div class="separator-dashed"></div>
+            <!--     -->
+            <div class="d-flex">
+              <div class="flex-1 pt-1 ml-2">
+                <h6 class="fw-bold mb-1">{{ stockDataList[3][1] }}</h6>
+                <small class="text-muted">{{ stockDataList[3][2] }}</small>
+              </div>
+              <div class="d-flex ml-auto align-items-center">
+                <h3 class="text-info fw-bold">+ {{totalValueDataList[3][1]}}%</h3>
+              </div>
+            </div>
+            <!--     -->
+            <div class="separator-dashed"></div>
+            <!--     -->
+            <div class="d-flex">
+              <div class="flex-1 pt-1 ml-2">
+                <h6 class="fw-bold mb-1">{{ stockDataList[4][1] }}</h6>
+                <small class="text-muted">{{ stockDataList[4][2] }}</small>
+              </div>
+              <div class="d-flex ml-auto align-items-center">
+                <h3 class="text-info fw-bold">+ {{totalValueDataList[4][1]}}%</h3>
+              </div>
+            </div>
+            <!--     -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+
+
+
+{% endblock content %}
+
+{% block javascripts %}
+
+	<script>
+    var snpChartDates  = {{ snpChartData[0][0]|tojson }};
+    var snpChartValues = {{ snpChartData[0][1]|tojson }};
+    //======================================
+    // SNP 500 Javascript Functions
+    //======================================
+    var lineChart = document.getElementById('lineChart').getContext('2d');
+    var myLineChart = new Chart(lineChart, {
+      type: 'line',
+      data: {
+        labels: snpChartDates,
+        datasets: [{
+          label: "SNP 500",
+          borderColor: "#1d7af3",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#1d7af3",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          backgroundColor: 'transparent',
+          fill: true,
+          borderWidth: 2,
+          data: snpChartValues
+        }]
+      },
+      options : {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          position: 'bottom',
+          labels : {
+            padding: 10,
+            fontColor: '#1d7af3',
+          }
+        },
+        tooltips: {
+          bodySpacing: 4,
+          mode:"nearest",
+          intersect: 0,
+          position:"nearest",
+          xPadding:10,
+          yPadding:10,
+          caretPadding:10
+        },
+        layout:{
+          padding:{left:15,right:15,top:15,bottom:15}
+        }
+      }
+    });
+
+
+
+
+
+
+    //======================================
+    // Top 5 Stock Chart JavaScript
+    //======================================
+    var htmlLegendsChart = document.getElementById('htmlLegendsChart').getContext('2d');
+
+
+    // Data from Python
+    var stockOneName   = {{ dashboardChart[0][0]|tojson }};
+    var stockTwoName   = {{ dashboardChart[1][0]|tojson }};
+    var stockThreeName = {{ dashboardChart[2][0]|tojson }};
+    var stockFourName  = {{ dashboardChart[3][0]|tojson }};
+    var stockFiveName  = {{ dashboardChart[4][0]|tojson }};
+    //
+    var dates          = {{ dashboardChart[0][1]|tojson }};
+    //
+    var topChartOne    = {{ dashboardChart[0][2]|tojson }};
+    var topChartTwo    = {{ dashboardChart[1][2]|tojson }};
+    var topChartThree  = {{ dashboardChart[2][2]|tojson }};
+    var topChartFour   = {{ dashboardChart[3][2]|tojson }};
+    var topChartFive   = {{ dashboardChart[4][2]|tojson }};
+    //
+    var stockOneSecurity   = {{ stockDataList[0][1]|tojson }};
+    var stockTwoSecurity   = {{ stockDataList[1][1]|tojson }};
+    var stockThreeSecurity = {{ stockDataList[2][1]|tojson }};
+    var stockFourSecurity  = {{ stockDataList[3][1]|tojson }};
+    var stockFiveSecurity  = {{ stockDataList[4][1]|tojson }};
+    //
+    var stockOneSector   = {{ stockDataList[0][2]|tojson }};
+    var stockTwoSector   = {{ stockDataList[1][2]|tojson }};
+    var stockThreeSector = {{ stockDataList[2][2]|tojson }};
+    var stockFourSector  = {{ stockDataList[3][2]|tojson }};
+    var stockFiveSector  = {{ stockDataList[4][2]|tojson }};
+    //
+    var stockOneYearProfit   = {{ totalValueDataList[0][1]|tojson }};
+    var stockTwoYearProfit   = {{ totalValueDataList[1][1]|tojson }};
+    var stockThreeYearProfit = {{ totalValueDataList[2][1]|tojson }};
+    var stockFourYearProfit  = {{ totalValueDataList[3][1]|tojson }};
+    var stockFiveYearProfit  = {{ totalValueDataList[4][1]|tojson }};
+    //
+    var stockOneModelScore   = {{ totalValueDataList[0][2]|tojson }};
+    var stockTwoModelScore   = {{ totalValueDataList[1][2]|tojson }};
+    var stockThreeModelScore = {{ totalValueDataList[2][2]|tojson }};
+    var stockFourModelScore  = {{ totalValueDataList[3][2]|tojson }};
+    var stockFiveModelScore  = {{ totalValueDataList[4][2]|tojson }};
+
+    //====================================================
+
+    // Sliding Colors for Stock 1
+    var gradientStroke = htmlLegendsChart.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, '#3E3AAB');
+    gradientStroke.addColorStop(1, '#3E3AAB');
+
+    var gradientFill = htmlLegendsChart.createLinearGradient(500, 0, 100, 0);
+    gradientFill.addColorStop(0, "rgba(62, 58, 171, 0.2)");
+
+    // Sliding Colors for Stock 2
+    var gradientStroke2 = htmlLegendsChart.createLinearGradient(500, 0, 100, 0);
+    gradientStroke2.addColorStop(0, '#3FD467');
+    gradientStroke2.addColorStop(1, '#3FD467');
+
+    var gradientFill2 = htmlLegendsChart.createLinearGradient(500, 0, 100, 0);
+    gradientFill2.addColorStop(0, "rgba(63, 212, 103, 0.4)");
+
+    // Sliding Colors for Stock 3
+    var gradientStroke3 = htmlLegendsChart.createLinearGradient(500, 0, 100, 0);
+    gradientStroke3.addColorStop(0, '#187BCC');
+    gradientStroke3.addColorStop(1, '#187BCC');
+
+    var gradientFill3 = htmlLegendsChart.createLinearGradient(500, 0, 100, 0);
+    gradientFill3.addColorStop(0, "rgba(24, 123, 204, 0.6)");
+
+    // Sliding Colors for Stock 4
+    var gradientStroke4 = htmlLegendsChart.createLinearGradient(500, 0, 100, 0);
+    gradientStroke4.addColorStop(0, '#D1751D');
+    gradientStroke4.addColorStop(1, '#D1751D');
+
+    var gradientFill4 = htmlLegendsChart.createLinearGradient(500, 0, 100, 0);
+    gradientFill4.addColorStop(0, "rgba(209, 117, 29, 0.8)");
+
+    // Sliding Colors for Stock 5
+    var gradientStroke5 = htmlLegendsChart.createLinearGradient(500, 0, 100, 0);
+    gradientStroke5.addColorStop(0, '#BD1521');
+    gradientStroke5.addColorStop(1, '#BD1521');
+
+    var gradientFill5 = htmlLegendsChart.createLinearGradient(500, 0, 100, 0);
+    gradientFill5.addColorStop(0, "rgba(189, 21, 33, 1.0)");
+
+    // Top Chart, best 5
+    var myHtmlLegendsChart = new Chart(htmlLegendsChart, {
+      type: 'line',
+      data: {
+        labels: dates,
+        datasets: [ {
+          label: stockOneName,
+          borderColor: gradientStroke,
+          pointBackgroundColor: gradientStroke,
+          pointRadius: 0,
+          backgroundColor: gradientFill,
+          legendColor: '#3E3AAB',
+          fill: true,
+          borderWidth: 1,
+          data: topChartOne
+        }, {
+          label: stockTwoName,
+          borderColor: gradientStroke2,
+          pointBackgroundColor: gradientStroke2,
+          pointRadius: 0,
+          backgroundColor: gradientFill2,
+          legendColor: '#3FD467',
+          fill: true,
+          borderWidth: 1,
+          data: topChartTwo
+        },{
+          label: stockThreeName,
+          borderColor: gradientStroke3,
+          pointBackgroundColor: gradientStroke3,
+          pointRadius: 0,
+          backgroundColor: gradientFill3,
+          legendColor: '#187BCC',
+          fill: true,
+          borderWidth: 1,
+          data: topChartThree
+        },{
+          label: stockFourName,
+          borderColor: gradientStroke4,
+          pointBackgroundColor: gradientStroke4,
+          pointRadius: 0,
+          backgroundColor: gradientFill4,
+          legendColor: '#D1751D',
+          fill: true,
+          borderWidth: 1,
+          data: topChartFour
+        }, {
+          label: stockFiveName,
+          borderColor: gradientStroke5,
+          pointBackgroundColor: gradientStroke5,
+          pointRadius: 0,
+          backgroundColor: gradientFill5,
+          legendColor: '#BD1521',
+          fill: true,
+          borderWidth: 1,
+          data: topChartFive
+        }]
+      },
+      options : {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: false
+        },
+        tooltips: {
+          bodySpacing: 4,
+          mode:"nearest",
+          intersect: 0,
+          position:"nearest",
+          xPadding:10,
+          yPadding:10,
+          caretPadding:10
+        },
+        layout:{
+          padding:{left:15,right:15,top:15,bottom:15}
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: "rgba(0,0,0,0.5)",
+              fontStyle: "500",
+              beginAtZero: false,
+              maxTicksLimit: 5,
+              padding: 20
+            },
+            gridLines: {
+              drawTicks: false,
+              display: false
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              zeroLineColor: "transparent"
+            },
+            ticks: {
+              padding: 20,
+              fontColor: "rgba(0,0,0,0.5)",
+              fontStyle: "500"
+            }
+          }]
+        },
+        legendCallback: function(chart) {
+          var text = [];
+          text.push('<ul class="' + chart.id + '-legend html-legend">');
+          for (var i = 0; i < chart.data.datasets.length; i++) {
+            text.push('<li><span style="background-color:' + chart.data.datasets[i].legendColor + '"></span>');
+            if (chart.data.datasets[i].label) {
+              text.push(chart.data.datasets[i].label);
+            }
+            text.push('</li>');
+          }
+          text.push('</ul>');
+          return text.join('');
+        }
+      }
+    });
+
+    var myLegendContainer = document.getElementById("myChartLegend");
+    // generate HTML legend
+    myLegendContainer.innerHTML = myHtmlLegendsChart.generateLegend();
+
+    // bind onClick event to all LI-tags of the legend
+    var legendItems = myLegendContainer.getElementsByTagName('li');
+    for (var i = 0; i < legendItems.length; i += 1) {
+      legendItems[i].addEventListener("click", legendClickCallback, false);
+    }
+
+    //======================================
+    // Top 5 Statistics
+    //======================================
+    Circles.create({
+			id:'circles-1',
+			radius:40,
+			value:stockOneModelScore,
+			maxValue:100,
+			width:7,
+			text: stockOneModelScore,
+			colors:['#f1f1f1', '#3E3AAB'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		});
+
+		Circles.create({
+			id:'circles-2',
+			radius:40,
+			value:stockTwoModelScore,
+			maxValue:100,
+			width:7,
+			text: stockTwoModelScore,
+			colors:['#f1f1f1', '#3FD467'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		});
+
+		Circles.create({
+			id:'circles-3',
+			radius:40,
+			value:stockThreeModelScore,
+			maxValue:100,
+			width:7,
+			text: stockThreeModelScore,
+			colors:['#f1f1f1', '#187BCC'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		});
+
+    Circles.create({
+      id:'circles-4',
+      radius:40,
+      value:stockFourModelScore,
+      maxValue:100,
+      width:7,
+      text: stockFourModelScore,
+      colors:['#f1f1f1', '#D1751D'],
+      duration:400,
+      wrpClass:'circles-wrp',
+      textClass:'circles-text',
+      styleWrapper:true,
+      styleText:true
+    });
+
+    Circles.create({
+      id:'circles-5',
+      radius:40,
+      value:stockFiveModelScore,
+      maxValue:100,
+      width:7,
+      text: stockFiveModelScore,
+      colors:['#f1f1f1', '#BD1521'],
+      duration:400,
+      wrpClass:'circles-wrp',
+      textClass:'circles-text',
+      styleWrapper:true,
+      styleText:true
+    });
+
+	</script>
+
+{% endblock javascripts %}

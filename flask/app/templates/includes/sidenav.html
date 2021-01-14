@@ -1,0 +1,90 @@
+
+		<!-- Sidebar -->
+		<div class="sidebar sidebar-style-2" data-background-color="dark2">
+
+			<div class="sidebar-wrapper scrollbar scrollbar-inner">
+				<div class="sidebar-content">
+
+					{% if current_user.is_authenticated %}
+
+						<div>
+						<ul class="nav nav-primary">
+						<!--
+						===================================
+							Home Page
+						===================================
+						-->
+							<li class="nav-item">
+								<a href="/dashboard.html">
+									<i class="icon-layers"></i>
+									<p>Dashboard</p>
+								</a>
+							</li>
+						<!--
+						===================================
+							Stock List
+						===================================
+						-->
+							<li class="nav-item">
+								<a href="/stocklist.html">
+									<i class="icon-list"></i>
+									<span class="sub-item">Stock List</span>
+								</a>
+							</li>
+						<!--
+						===================================
+							Statistics
+						===================================
+						-->
+							<li class="nav-item">
+								<a href="/reports.html">
+									<i class="icon-chart"></i>
+									<p>Reports</p>
+								</a>
+							</li>
+						<!--
+						===================================
+							Github
+						===================================
+						-->
+							<li class="nav-item">
+								<a href="github.com/aevear">
+									<i class="fab fa-github"></i>
+									<p>Github</p>
+								</a>
+							</li>
+						<!--
+						===================================
+							Xanland
+						===================================
+						-->
+							<li class="nav-item">
+								<a href="xanland.com">
+									<i class="fab fa-fort-awesome"></i>
+									<p>Xanland</p>
+								</a>
+							</li>
+						<!--
+						===================================
+							About
+						===================================
+						-->
+							<li class="nav-item">
+								<a href="/about.html">
+									<i class="icon-people"></i>
+									<p>About Us</p>
+								</a>
+							</li>
+
+
+						</ul>
+					</div>
+
+					{% endif %}
+
+				</div>
+			</div>
+		</div>
+
+
+		<!-- End Sidebar -->

@@ -1,0 +1,106 @@
+
+{% extends "layouts/default.html" %}
+
+{% block title %} Dashboard {% endblock title %}
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="page-inner">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title text-center">List of Stocks</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table id="multi-filter-select" class="display table table-striped table-hover" >
+                    <thead>
+                        <tr>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Ticker</th>
+                            <th scope="col">Company Name</th>
+                            <th scope="col">Yearly Profit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {% for stonkRow in stockData %}
+                        <tr class='clickable-row' data-href='{{ url_for('load_stock_info', stonkName=stonkRow[1]) }}'>>
+                            <td>{{stonkRow[0]}}</td>  {# <- not stockData #}
+                            <td>{{stonkRow[1]}}</td>  {# <- not stockData #}
+                            <td>{{stonkRow[2]}}</td>  {# <- not stockData #}
+                            <td>{{stonkRow[3]}}</td>  {# <- not stockData #}
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+
+
+{% endblock content %}
+
+{% block javascripts %}
+
+<script >
+jQuery(document).ready(function($) {
+$(".clickable-row").click(function() {
+    window.location = $(this).data("href");
+    });
+});
+
+  $(document).ready(function() {
+    $('#basic-datatables').DataTable({
+    });
+
+    $('#multi-filter-select').DataTable( {
+      "pageLength": 20,
+      initComplete: function () {
+        this.api().columns().every( function () {
+          var column = this;
+          var select = $('<select class="form-control"><option value=""></option></select>')
+          .appendTo( $(column.footer()).empty() )
+          .on( 'change', function () {
+            var val = $.fn.dataTable.util.escapeRegex(
+              $(this).val()
+              );
+
+            column
+            .search( val ? '^'+val+'$' : '', true, false )
+            .draw();
+          } );
+
+          column.data().unique().sort().each( function ( d, j ) {
+            select.append( '<option value="'+d+'">'+d+'</option>' )
+          } );
+        } );
+      }
+    });
+
+    // Add Row
+    $('#add-row').DataTable({
+      "pageLength": 5,
+    });
+
+    var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+    $('#addRowButton').click(function() {
+      $('#add-row').dataTable().fnAddData([
+        $("#addName").val(),
+        $("#addPosition").val(),
+        $("#addOffice").val(),
+        action
+        ]);
+      $('#addRowModal').modal('hide');
+
+    });
+  });
+</script>
+
+{% endblock javascripts %}

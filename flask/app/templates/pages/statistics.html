@@ -1,0 +1,91 @@
+
+{% extends "layouts/default.html" %}
+
+{% block title %} Panels {% endblock title %}
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header">
+                      <h4 class="card-title">Nav Pills (Horizontal Tabs)</h4>
+                  </div>
+                  <div class="card-body">
+                      <ul class="nav nav-pills nav-secondary" id="pills-tab" role="tablist">
+                          <li class="nav-item">
+                              <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+                          </li>
+                      </ul>
+                      <div class="tab-content mt-2 mb-3" id="pills-tabContent">
+                          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+
+                            <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+                            </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                            <h3 id="Yahoo-Finance">Yahoo Finance</h3><p>The majority of the information pulled into the system and processed comes from <em>Yahoo Finance</em> one of the top sources for free stock market data. Yahoo Finance used to be considered the golder standard for stock data until they shut down thier API in 2017. However by using the <strong>yfinance</strong> python library we can connect to the new API provided by Yahoo Finance.</p>
+                            <p>Library Source : <a href="https://github.com/ranaroussi/yfinance">https://github.com/ranaroussi/yfinance</a></p>
+                            <h4 id="What-data-do-we-need-to-start?">What data do we need to start?</h4><p><strong>Tickers</strong> : A list of ticker values is the only thing needed to initialize the program. These can be found from any stock source site and are representative of which companies stock you are looking at. For example: Tesla is (TSLA). Ford Motors is (F).</p>
+                            <h3 id="What-data-do-we-pull?">What data do we pull?</h3><h4 id="Time-Frame">Time Frame</h4><p>We only pull seven years of historical data for each stock</p>
+                            <h4 id="Meta-Data">Meta Data</h4><p><em>Short Name</em> : The actual name of the company
+                            <br>
+                            <em>Sector</em> : This is the economic area the company covers
+                            <br>
+                            <em>Full Time Employees</em> : This value denotes the number of employees in the company
+                            <br>
+                            <em>Exchange</em> : Which stock exchange the company is on</p>
+                            <h4 id="Daily-Data">Daily Data</h4><p><em>Date</em> : This is the date that the record is tied to
+                            <br>
+                            <em>Open</em> : The value of the stock when the markets opened
+                            <br>
+                            <em>High</em> : The highest value the stock reached during that trading day
+                            <br>
+                            <em>Low</em> : The lowest value the stock reached during the trading day
+                            <br>
+                            <em>Close</em> : The value of the stock when the markets closed at the end of the trading day
+                            <br>
+                            <em>Volume</em> : The amount of stock that was traded in that day
+                            <br>
+                            <em>Dividends</em> : The amount of money paid to each stock holder as a dividended during that trading day
+                            <br>
+                            <em>Stock Split</em> : This value shows if the stock split during the trading day and how it split during the day of trading</p>
+                            <h3 id="Location-in-Code">Location in Code</h3><p>The data here is pulled in with the <em>Initalize Database</em> code, saved to <em>Master DB</em> sqlite database and is queried with the <em>SQL Queries</em> section of the code</p>
+
+                            </div>
+                            </div>
+
+                          </div>
+                          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                              <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                              <p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
+                              </p>
+                          </div>
+                          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                              <p>Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>
+
+                              <p> But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block javascripts %}
+
+{% endblock javascripts %}
