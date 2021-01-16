@@ -6,7 +6,18 @@ Thank you for taking a look at *Stonktastic*. Please start by taking a look at t
 
 Project Overview: We used *Juputer Notebooks* to record most of the project overview located [here](https://github.com/aevear/Stonktastic/tree/main/notebooks)
 - [Data Sources Used](https://github.com/aevear/Stonktastic/blob/main/notebooks/Documentation_Data_Source.ipynb)
-- []
+- [Database Structure](https://github.com/aevear/Stonktastic/blob/main/notebooks/Documentation_Database_Structure.ipynb)
+- [Development Practices](https://github.com/aevear/Stonktastic/blob/main/notebooks/Documentation_Development_Practices.ipynb)
+- [Flask](https://github.com/aevear/Stonktastic/blob/main/notebooks/Documentation_Flask.ipynb)
+- [Installation Instructions](https://github.com/aevear/Stonktastic/blob/main/notebooks/Documentation_Installation.ipynb)
+- [Python Libraries](https://github.com/aevear/Stonktastic/blob/main/notebooks/Documentation_Python_Libraries_Used.ipynb)
+- [Stock Technical Indicators](https://github.com/aevear/Stonktastic/blob/main/notebooks/Documentation_Stock_Technical_Indicators.ipynb)
+- [Structure and Formatting Guide](https://github.com/aevear/Stonktastic/blob/main/notebooks/Documentation_Structural_and_Formatting_Guide.ipynb)
+
+Machine Learning Reports
+- [Polynomial Regression](https://github.com/aevear/Stonktastic/blob/main/notebooks/Documentation_Polynomial_Regression.ipynb)
+- [LSTM Recurrent Neural Network](https://github.com/aevear/Stonktastic/blob/main/notebooks/Documentation_Memory.ipynb)
+- [Random Forest](https://github.com/aevear/Stonktastic/blob/main/notebooks/Documentation_Random_Forest.ipynb)
 
 ## Install Conda
 *Source* : https://docs.anaconda.com/anaconda/install/
