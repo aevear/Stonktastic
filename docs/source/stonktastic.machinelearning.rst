@@ -44,10 +44,10 @@ stonktastic.machinelearning.ranForest module
    :undoc-members:
    :show-inheritance:
 
-stonktastic.machinelearning.rnnMemory module
+stonktastic.machinelearning.memory module
 --------------------------------------------
 
-.. automodule:: stonktastic.machinelearning.rnnMemory
+.. automodule:: stonktastic.machinelearning.memory
    :members:
    :undoc-members:
    :show-inheritance:

@@ -9,7 +9,6 @@ Subpackages
 
    stonktastic.config
    stonktastic.databaseCode
-   stonktastic.flask
    stonktastic.machinelearning
    stonktastic.optimization
 
