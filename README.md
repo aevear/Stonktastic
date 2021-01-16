@@ -1,14 +1,22 @@
 # Stonktastic
 
 ## Overview of Project
+<<<<<<< HEAD
 Thank you for taking a look at *Stonktastic*. Please start by taking a look at the documentation
+=======
+Thank you for taking a look at *Stonktastic*. Please start by taking a look at the documentation 
+>>>>>>> 4aebfd1f43e05cd30ee66728860f5a8160f74074
 
 Project Overview: We used *Juputer Notebooks* to record most of the project overview located [here](https://github.com/aevear/Stonktastic/tree/main/notebooks)
 - [Data Sources Used](https://github.com/aevear/Stonktastic/blob/main/notebooks/Documentation_Data_Source.ipynb)
 - []
 
 
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 4aebfd1f43e05cd30ee66728860f5a8160f74074
 ## Install Conda
 *Source* : https://docs.anaconda.com/anaconda/install/
 <br>
@@ -42,7 +50,11 @@ This will activate conda in your enviroment. Once active you will need to deacti
 <br>
 
 ## Installing Requirements.txt
+<<<<<<< HEAD
 By using *pip* one can install all of the dependencies for the project at once and with the correct version.
+=======
+By using *pip* one can install all of the dependencies for the project at once and with the correct version. 
+>>>>>>> 4aebfd1f43e05cd30ee66728860f5a8160f74074
 
 1. First, navigate to the correct folder (/Stonktastic/)
 
@@ -57,11 +69,19 @@ By using *pip* one can install all of the dependencies for the project at once a
 <br>
 
 ## Local Editable Install
+<<<<<<< HEAD
 In order to have greater accessability to the project from outside the direct folder, we will install the project as a *Local Editable Package*. This also helps with the later push to have the finished project downloadable and installable as a package.
 
 The Jupyter notebooks also have easier access with a local install as they only need to import the specific functions in the library from the enviroment rather than using path references.
 
 You can install a project as a local editable install with a *setup.py* file and a *setup.cfg* file.
+=======
+In order to have greater accessability to the project from outside the direct folder, we will install the project as a *Local Editable Package*. This also helps with the later push to have the finished project downloadable and installable as a package. 
+
+The Jupyter notebooks also have easier access with a local install as they only need to import the specific functions in the library from the enviroment rather than using path references. 
+
+You can install a project as a local editable install with a *setup.py* file and a *setup.cfg* file. 
+>>>>>>> 4aebfd1f43e05cd30ee66728860f5a8160f74074
 
 - *pip install -e .*
 
