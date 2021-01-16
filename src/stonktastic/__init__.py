@@ -14,6 +14,5 @@ Imports the core five areas of Stonkcastic:
 """
 import stonktastic.config
 import stonktastic.databaseCode
-import stonktastic.flask
 import stonktastic.machinelearning
 import stonktastic.optimization

@@ -20,9 +20,8 @@ from app        import app, lm, db, bc
 from app.models import User
 from app.forms  import LoginForm, RegisterForm
 
-# Stonk Models
-from stonktastic.databaseCode.sqlQueries import nameListGen
-from stonktastic.flask.flask  import getDashboardFlaskData, getStockTemplateData, getIndividualStockInfo
+from app.code.sqlQueries import nameList
+from app.code.flask import getDashboardFlaskData, getStockTemplateData, getIndividualStockInfo
 
 # Dashboard page
 @app.route('/dashboard.html', methods=['GET', 'POST'])
@@ -35,7 +34,6 @@ def load_dashboard():
 @app.route('/stocklist.html', methods=['GET', 'POST'])
 def load_stocktemplate_info():
 
-    nameListGen()
     stockData = getStockTemplateData()
 
     return render_template('pages/stocklist.html', stockData=stockData)
@@ -44,7 +42,6 @@ def load_stocktemplate_info():
 @app.route('/stock/<stonkName>')
 def load_stock_info(stonkName):
 
-    nameListGen()
     stockData = getIndividualStockInfo(stonkName)
 
     return render_template('pages/stock.html', stonkName=stockData[0], chartData=stockData[1], dataTable=stockData[2], dates=stockData[3], closeValue=stockData[4], linRegPred=stockData[5], memoryPred=stockData[6],forestPred=stockData[7])
@@ -59,7 +56,7 @@ def load_user(user_id):
 @app.route('/logout.html')
 def logout():
     logout_user()
-    return redirect(url_for('dashboard'))
+    return redirect(url_for(load_dashboard))
 
 # Register a new user
 @app.route('/register.html', methods=['GET', 'POST'])
@@ -67,7 +64,7 @@ def register():
 
     # cut the page for authenticated users
     if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('load_dashboard'))
 
     # declare the Registration Form
     form = RegisterForm(request.form)
@@ -116,7 +113,7 @@ def login():
 
     # cut the page for authenticated users
     if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('load_dashboard'))
 
     # Declare the login form
     form = LoginForm(request.form)
@@ -139,7 +136,7 @@ def login():
             #if bc.check_password_hash(user.password, password):
             if user.password == password:
                 login_user(user)
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('load_dashboard'))
             else:
                 msg = "Wrong password. Please try again."
         else:

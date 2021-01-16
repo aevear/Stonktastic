@@ -30,4 +30,4 @@ def initialize_database():
     db.create_all()
 
 # Import routing, models and Start the App
-from app import views, models
+from app import views, models, code
