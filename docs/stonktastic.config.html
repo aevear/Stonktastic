@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>stonktastic.config package &mdash; Stonktastic 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="stonktastic.databaseCode package" href="stonktastic.databaseCode.html" />
+    <link rel="prev" title="stonktastic package" href="stonktastic.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Stonktastic
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="stonktastic.html">stonktastic package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="stonktastic.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">stonktastic.config package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-stonktastic.config.config">stonktastic.config.config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-stonktastic.config.paths">stonktastic.config.paths module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-stonktastic.config">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="stonktastic.databaseCode.html">stonktastic.databaseCode package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stonktastic.machinelearning.html">stonktastic.machinelearning package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stonktastic.optimization.html">stonktastic.optimization package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="stonktastic.html#module-stonktastic">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">stonktastic.config package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-stonktastic.config.config">stonktastic.config.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-stonktastic.config.paths">stonktastic.config.paths module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-stonktastic.config">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stonktastic.databaseCode.html">stonktastic.databaseCode package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stonktastic.machinelearning.html">stonktastic.machinelearning package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stonktastic.optimization.html">stonktastic.optimization package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Stonktastic</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="stonktastic.html">stonktastic package</a> &raquo;</li>
+        
+      <li>stonktastic.config package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/stonktastic.config.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="stonktastic-config-package">
+<h1>stonktastic.config package<a class="headerlink" href="#stonktastic-config-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-stonktastic.config.config">
+<span id="stonktastic-config-config-module"></span><h2>stonktastic.config.config module<a class="headerlink" href="#module-stonktastic.config.config" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>Summary:</dt><dd><p>Here we import and load the values from <em>config.csv</em> into the code. There are no functions. The code uses pandas to load the CSV into a dataframe then sequesters off each part into its own value</p>
+</dd>
+</dl>
+<p><strong>Configuration Values</strong></p>
+<blockquote>
+<div><p><strong>Variables</strong></p>
+<ul class="simple">
+<li><p><em>polyVariables</em> (list) : list of variables that will be used for <em>Polynomial Regression</em>.</p></li>
+<li><p><em>memVariables</em> (list) : list of variables that will be used for <em>mem</em>.</p></li>
+<li><p><em>ranVariables</em> (list) : list of variables that will be used for <em>Random Forest</em>.</p></li>
+</ul>
+<p><strong>Settings</strong></p>
+<ul class="simple">
+<li><p><em>RSILookbackTime</em> (int) : Number of days we want to look back when calculating <em>RIS</em>.</p></li>
+<li><p><em>maxSQLPull</em> (int) : Maximum number of days to look back on from current day when pulling from the SQL database</p></li>
+<li><p><em>maxHistory</em> (int) : Number of trading days in a year.</p></li>
+<li><p><em>polyPolynomial</em> (int) : Polynomial level used in the code. This increases the chance of overfitting if raised too high.</p></li>
+<li><p><em>memLookbackTime</em> (int) : Number of days that we will look back in with the LTMS model.</p></li>
+<li><p><em>memLoss</em> (str) : The method used to calculate <em>loss</em> in the mem model.</p></li>
+<li><p><em>memActivation</em> (str) : Value we are using for activation in the mem model.</p></li>
+<li><p><em>memOptimizer</em> (str) : Optimizer used in the mem model.</p></li>
+<li><p><em>memEpochs</em> (int) : Number of Epochs used as a standard for the LTMS model.</p></li>
+<li><p><em>memBatchSize</em> (int) : Number of Neurons simulated in the mem model.</p></li>
+<li><p><em>ranForEstimators</em> (int) : Number of descision trees used in the Random Forest Model.</p></li>
+<li><p><em>stockToOpt</em> (str) : The stock code that will be used when optimizing the program</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-stonktastic.config.paths">
+<span id="stonktastic-config-paths-module"></span><h2>stonktastic.config.paths module<a class="headerlink" href="#module-stonktastic.config.paths" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>Summary:</dt><dd><p>Using the <em>pathlib</em> library we generate path values and dict/key pairs for the location of the models and configuration files.
+This code also connects to the database and generates the connector and cursor values.</p>
+</dd>
+</dl>
+<p><strong>Configuration Values</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>Localpath</em> (path obj) : Path to the project folder.</p></li>
+<li><p><em>dbLocation</em> (path obj) : Path to the Database.</p></li>
+<li><p><em>configLocations</em> (path obj) : Path to where the config variables are saved.</p></li>
+<li><p><em>modelLocation</em> (path obj) : Path to the models Folder.</p></li>
+<li><p><em>modelPaths</em> (dict) : Dict/Key pair for each machine learning model’s folder location.</p></li>
+<li><p><em>filePaths</em> (dict) : Dict/Key pair for the configuration files.</p></li>
+<li><p><em>dbconnector</em> (obj) : SQL Lite connector object to the production DB.</p></li>
+<li><p><em>dbcursor</em> (obj) : SQL Lite cursor object for the dbconnector mentioned above.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-stonktastic.config">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-stonktastic.config" title="Permalink to this headline">¶</a></h2>
+<p>There are two areas of Config that need to be imported</p>
+<ul class="simple">
+<li><p>Config : imports the variables saved in <em>config.csv</em> into the code.</p></li>
+<li><p>Paths : Using <em>pathlib</em> we generate the pathing needed for reference to the database, models and other files</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="stonktastic.databaseCode.html" class="btn btn-neutral float-right" title="stonktastic.databaseCode package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="stonktastic.html" class="btn btn-neutral float-left" title="stonktastic package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Alexander Hahn, Kody Richardson, Dalen Healy.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

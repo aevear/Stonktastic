@@ -1,0 +1,633 @@
+---------------------------------- page 1 ----------------------------------
+#### DownExpandingContainer('title')
+  StaticGroupedFlowables()
+    Paragraph('Stonktastic', style='title page title')
+         > (0,0,1,0,2) title page title
+           (0,0,0,0,2) body
+      SingleStyledText('Stonktastic')
+    Paragraph('Release 1.0.0', style='title page subtitle')
+         > (0,0,1,0,2) title page subtitle
+           (0,0,0,0,2) body
+      SingleStyledText('Release 1.0.0')
+    Paragraph('Alexander Hahn, Kody Richardson,...', style='title page author')
+         > (0,0,1,0,2) title page author
+           (0,0,0,0,2) body
+      SingleStyledText('Alexander Hahn, Kody Richardson,...')
+    Paragraph('Jan 09, 2021', style='title page date')
+         > (0,0,1,0,2) title page date
+           (0,0,0,0,2) body
+      SingleStyledText('Jan 09, 2021')
+---------------------------------- page i ----------------------------------
+#### FootnoteContainer('footnotes')
+  StaticGroupedFlowables()
+#### DownExpandingContainer('floats')
+  StaticGroupedFlowables()
+#### FlowablesContainer('chapter title')
+  Paragraph('Table of Contents', style='front matter section title')
+       > (0,0,1,0,2) front matter section title
+         (0,0,0,0,2) body
+    Field('Table of Contents')
+      SingleStyledText('Table of Contents')
+#### ChainedContainer('column1')
+  StaticGroupedFlowables()
+    TableOfContentsSection(style='table of contents')
+         > (0,0,1,0,1) table of contents section
+           (0,0,0,1,1) chapter
+      TableOfContents()   table of contents
+           > (0,0,0,0,2) table of contents
+        TableOfContentsEntry('1	Stonktastic main	1')
+             > (0,0,0,1,2) toc level 1
+            MixedStyledText('1	Stonktastic main	1')
+              ReferenceField('1')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('1')
+              Tab('	')
+              ReferenceField('Stonktastic main')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('Stonktastic main')
+              Tab('	')
+              ReferenceField('1')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('1')
+        TableOfContentsEntry('2	Stonktastic Config	3')
+             > (0,0,0,1,2) toc level 1
+            MixedStyledText('2	Stonktastic Config	3')
+              ReferenceField('2')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('2')
+              Tab('	')
+              ReferenceField('Stonktastic Config')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('Stonktastic Config')
+              Tab('	')
+              ReferenceField('3')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('3')
+        TableOfContentsEntry('3	Stonktastic Database Code	5')
+             > (0,0,0,1,2) toc level 1
+            MixedStyledText('3	Stonktastic Database Code	5')
+              ReferenceField('3')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('3')
+              Tab('	')
+              ReferenceField('Stonktastic Database Code')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('Stonktastic Database Code')
+              Tab('	')
+              ReferenceField('5')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('5')
+        TableOfContentsEntry('4	Stonktastic Flask	7')
+             > (0,0,0,1,2) toc level 1
+            MixedStyledText('4	Stonktastic Flask	7')
+              ReferenceField('4')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('4')
+              Tab('	')
+              ReferenceField('Stonktastic Flask')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('Stonktastic Flask')
+              Tab('	')
+              ReferenceField('7')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('7')
+        TableOfContentsEntry('5	Stonktastic Machine Learning	9')
+             > (0,0,0,1,2) toc level 1
+            MixedStyledText('5	Stonktastic Machine Learning	9')
+              ReferenceField('5')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('5')
+              Tab('	')
+              ReferenceField('Stonktastic Machine Learning')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('Stonktastic Machine Learning')
+              Tab('	')
+              ReferenceField('9')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('9')
+        TableOfContentsEntry('6	Stonktastic Optimization	11')
+             > (0,0,0,1,2) toc level 1
+            MixedStyledText('6	Stonktastic Optimization	11')
+              ReferenceField('6')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('6')
+              Tab('	')
+              ReferenceField('Stonktastic Optimization')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('Stonktastic Optimization')
+              Tab('	')
+              ReferenceField('11')
+                   x (0,0,0,1,3) toc linked reference
+                   > (0,0,0,1,1) linked reference
+                SingleStyledText('11')
+#### DownExpandingContainer('footer')
+  StaticGroupedFlowables()
+    Footer('		i')
+         > (0,0,0,0,2) footer
+           (0,0,0,0,1) body
+      MixedStyledText('		i')
+        Tab('	')
+        Tab('	')
+        Field('i')
+          SingleStyledText('i')
+---------------------------------- page 1 ----------------------------------
+#### FootnoteContainer('footnotes')
+  StaticGroupedFlowables()
+#### DownExpandingContainer('floats')
+  StaticGroupedFlowables()
+#### FlowablesContainer('chapter title')
+  Paragraph('Chapter 1', style='body matter chapter label')
+       > (0,0,1,0,2) body matter chapter label
+         (0,0,0,0,2) body
+    MixedStyledText('Chapter 1')
+      MixedStyledText('Chapter ')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+      Field('1', style='number')
+           > (0,0,2,0,3) body matter chapter number
+        SingleStyledText('1')
+  Paragraph('Stonktastic main', style='body matter chapter title')
+       > (0,0,1,0,2) body matter chapter title
+         (0,0,0,0,2) body
+    Field('Stonktastic main')
+      SingleStyledText('Stonktastic main')
+  Paragraph('Chapter 1', style='body matter chapter label')
+       > (0,0,1,0,2) body matter chapter label
+         (0,0,0,0,2) body
+    MixedStyledText('Chapter 1')
+      MixedStyledText('Chapter ')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+      Field('1', style='number')
+           > (0,0,2,0,3) body matter chapter number
+        SingleStyledText('1')
+#### ChainedContainer('column1')
+  StaticGroupedFlowables()
+    DocumentTree()
+      StaticGroupedFlowables()   /Users/aevear/Documents/Github/Stonkcastic/newStonk/docs/source/index.rst:0 <compound>
+      Section(id='stonktastic-main')   /Users/aevear/Documents/Github/Stonkcastic/newStonk/docs/source/index.rst:8 <section>
+           > (0,0,0,1,2) chapter
+#### DownExpandingContainer('footer')
+  StaticGroupedFlowables()
+    Footer('		1')
+         > (0,0,0,0,2) footer
+           (0,0,0,0,1) body
+      MixedStyledText('		1')
+        Tab('	')
+        Tab('	')
+        Field('1')
+          SingleStyledText('1')
+---------------------------------- page 2 ----------------------------------
+#### FootnoteContainer('footnotes')
+  StaticGroupedFlowables()
+#### DownExpandingContainer('floats')
+  StaticGroupedFlowables()
+#### ChainedContainer('column1')
+  (continued) StaticGroupedFlowables()
+    (continued) DocumentTree()
+#### UpExpandingContainer('header')
+  StaticGroupedFlowables()
+    Header('Stonktastic, Release 1.0.0')
+         > (0,0,0,0,2) header
+           (0,0,0,0,1) body
+      MixedStyledText('Stonktastic, Release 1.0.0')
+        Field('Stonktastic')
+          SingleStyledText('Stonktastic')
+        SingleStyledText(', ')
+        Field('Release 1.0.0')
+          SingleStyledText('Release 1.0.0')
+#### DownExpandingContainer('footer')
+  StaticGroupedFlowables()
+    Footer('2		Chapter 1.  Stonktastic main')
+         > (0,0,0,0,2) footer
+           (0,0,0,0,1) body
+      MixedStyledText('2		Chapter 1.  Stonktastic main')
+        Field('2')
+          SingleStyledText('2')
+        Tab('	')
+        Tab('	')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+        Field('1')
+          SingleStyledText('2')
+        SingleStyledText('.  ')
+        Field('Stonktastic main')
+          SingleStyledText('Stonktastic Config')
+---------------------------------- page 3 ----------------------------------
+#### FootnoteContainer('footnotes')
+  StaticGroupedFlowables()
+#### DownExpandingContainer('floats')
+  StaticGroupedFlowables()
+#### FlowablesContainer('chapter title')
+  Paragraph('Chapter 2', style='body matter chapter label')
+       > (0,0,1,0,2) body matter chapter label
+         (0,0,0,0,2) body
+    MixedStyledText('Chapter 2')
+      MixedStyledText('Chapter ')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+      Field('2', style='number')
+           > (0,0,2,0,3) body matter chapter number
+        SingleStyledText('2')
+  Paragraph('Stonktastic Config', style='body matter chapter title')
+       > (0,0,1,0,2) body matter chapter title
+         (0,0,0,0,2) body
+    Field('Stonktastic Config')
+      SingleStyledText('Stonktastic Config')
+  Paragraph('Chapter 2', style='body matter chapter label')
+       > (0,0,1,0,2) body matter chapter label
+         (0,0,0,0,2) body
+    MixedStyledText('Chapter 2')
+      MixedStyledText('Chapter ')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+      Field('2', style='number')
+           > (0,0,2,0,3) body matter chapter number
+        SingleStyledText('2')
+#### ChainedContainer('column1')
+  (continued) StaticGroupedFlowables()
+    (continued) DocumentTree()
+      Section(id='stonktastic-config')   /Users/aevear/Documents/Github/Stonkcastic/newStonk/docs/source/index.rst:13 <section>
+           > (0,0,0,1,2) chapter
+#### DownExpandingContainer('footer')
+  StaticGroupedFlowables()
+    Footer('		3')
+         > (0,0,0,0,2) footer
+           (0,0,0,0,1) body
+      MixedStyledText('		3')
+        Tab('	')
+        Tab('	')
+        Field('3')
+          SingleStyledText('3')
+---------------------------------- page 4 ----------------------------------
+#### FootnoteContainer('footnotes')
+  StaticGroupedFlowables()
+#### DownExpandingContainer('floats')
+  StaticGroupedFlowables()
+#### ChainedContainer('column1')
+  (continued) StaticGroupedFlowables()
+    (continued) DocumentTree()
+#### UpExpandingContainer('header')
+  StaticGroupedFlowables()
+    Header('Stonktastic, Release 1.0.0')
+         > (0,0,0,0,2) header
+           (0,0,0,0,1) body
+      MixedStyledText('Stonktastic, Release 1.0.0')
+        Field('Stonktastic')
+          SingleStyledText('Stonktastic')
+        SingleStyledText(', ')
+        Field('Release 1.0.0')
+          SingleStyledText('Release 1.0.0')
+#### DownExpandingContainer('footer')
+  StaticGroupedFlowables()
+    Footer('4		Chapter 2.  Stonktastic Confi...')
+         > (0,0,0,0,2) footer
+           (0,0,0,0,1) body
+      MixedStyledText('4		Chapter 2.  Stonktastic Confi...')
+        Field('4')
+          SingleStyledText('4')
+        Tab('	')
+        Tab('	')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+        Field('2')
+          SingleStyledText('3')
+        SingleStyledText('.  ')
+        Field('Stonktastic Config')
+          SingleStyledText('Stonktastic Database Code')
+---------------------------------- page 5 ----------------------------------
+#### FootnoteContainer('footnotes')
+  StaticGroupedFlowables()
+#### DownExpandingContainer('floats')
+  StaticGroupedFlowables()
+#### FlowablesContainer('chapter title')
+  Paragraph('Chapter 3', style='body matter chapter label')
+       > (0,0,1,0,2) body matter chapter label
+         (0,0,0,0,2) body
+    MixedStyledText('Chapter 3')
+      MixedStyledText('Chapter ')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+      Field('3', style='number')
+           > (0,0,2,0,3) body matter chapter number
+        SingleStyledText('3')
+  Paragraph('Stonktastic Database Code', style='body matter chapter title')
+       > (0,0,1,0,2) body matter chapter title
+         (0,0,0,0,2) body
+    Field('Stonktastic Database Code')
+      SingleStyledText('Stonktastic Database Code')
+  Paragraph('Chapter 3', style='body matter chapter label')
+       > (0,0,1,0,2) body matter chapter label
+         (0,0,0,0,2) body
+    MixedStyledText('Chapter 3')
+      MixedStyledText('Chapter ')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+      Field('3', style='number')
+           > (0,0,2,0,3) body matter chapter number
+        SingleStyledText('3')
+#### ChainedContainer('column1')
+  (continued) StaticGroupedFlowables()
+    (continued) DocumentTree()
+      Section(id='stonktastic-database-code')   /Users/aevear/Documents/Github/Stonkcastic/newStonk/docs/source/index.rst:18 <section>
+           > (0,0,0,1,2) chapter
+#### DownExpandingContainer('footer')
+  StaticGroupedFlowables()
+    Footer('		5')
+         > (0,0,0,0,2) footer
+           (0,0,0,0,1) body
+      MixedStyledText('		5')
+        Tab('	')
+        Tab('	')
+        Field('5')
+          SingleStyledText('5')
+---------------------------------- page 6 ----------------------------------
+#### FootnoteContainer('footnotes')
+  StaticGroupedFlowables()
+#### DownExpandingContainer('floats')
+  StaticGroupedFlowables()
+#### ChainedContainer('column1')
+  (continued) StaticGroupedFlowables()
+    (continued) DocumentTree()
+#### UpExpandingContainer('header')
+  StaticGroupedFlowables()
+    Header('Stonktastic, Release 1.0.0')
+         > (0,0,0,0,2) header
+           (0,0,0,0,1) body
+      MixedStyledText('Stonktastic, Release 1.0.0')
+        Field('Stonktastic')
+          SingleStyledText('Stonktastic')
+        SingleStyledText(', ')
+        Field('Release 1.0.0')
+          SingleStyledText('Release 1.0.0')
+#### DownExpandingContainer('footer')
+  StaticGroupedFlowables()
+    Footer('6		Chapter 3.  Stonktastic Datab...')
+         > (0,0,0,0,2) footer
+           (0,0,0,0,1) body
+      MixedStyledText('6		Chapter 3.  Stonktastic Datab...')
+        Field('6')
+          SingleStyledText('6')
+        Tab('	')
+        Tab('	')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+        Field('3')
+          SingleStyledText('4')
+        SingleStyledText('.  ')
+        Field('Stonktastic Database Code')
+          SingleStyledText('Stonktastic Flask')
+---------------------------------- page 7 ----------------------------------
+#### FootnoteContainer('footnotes')
+  StaticGroupedFlowables()
+#### DownExpandingContainer('floats')
+  StaticGroupedFlowables()
+#### FlowablesContainer('chapter title')
+  Paragraph('Chapter 4', style='body matter chapter label')
+       > (0,0,1,0,2) body matter chapter label
+         (0,0,0,0,2) body
+    MixedStyledText('Chapter 4')
+      MixedStyledText('Chapter ')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+      Field('4', style='number')
+           > (0,0,2,0,3) body matter chapter number
+        SingleStyledText('4')
+  Paragraph('Stonktastic Flask', style='body matter chapter title')
+       > (0,0,1,0,2) body matter chapter title
+         (0,0,0,0,2) body
+    Field('Stonktastic Flask')
+      SingleStyledText('Stonktastic Flask')
+  Paragraph('Chapter 4', style='body matter chapter label')
+       > (0,0,1,0,2) body matter chapter label
+         (0,0,0,0,2) body
+    MixedStyledText('Chapter 4')
+      MixedStyledText('Chapter ')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+      Field('4', style='number')
+           > (0,0,2,0,3) body matter chapter number
+        SingleStyledText('4')
+#### ChainedContainer('column1')
+  (continued) StaticGroupedFlowables()
+    (continued) DocumentTree()
+      Section(id='stonktastic-flask')   /Users/aevear/Documents/Github/Stonkcastic/newStonk/docs/source/index.rst:23 <section>
+           > (0,0,0,1,2) chapter
+#### DownExpandingContainer('footer')
+  StaticGroupedFlowables()
+    Footer('		7')
+         > (0,0,0,0,2) footer
+           (0,0,0,0,1) body
+      MixedStyledText('		7')
+        Tab('	')
+        Tab('	')
+        Field('7')
+          SingleStyledText('7')
+---------------------------------- page 8 ----------------------------------
+#### FootnoteContainer('footnotes')
+  StaticGroupedFlowables()
+#### DownExpandingContainer('floats')
+  StaticGroupedFlowables()
+#### ChainedContainer('column1')
+  (continued) StaticGroupedFlowables()
+    (continued) DocumentTree()
+#### UpExpandingContainer('header')
+  StaticGroupedFlowables()
+    Header('Stonktastic, Release 1.0.0')
+         > (0,0,0,0,2) header
+           (0,0,0,0,1) body
+      MixedStyledText('Stonktastic, Release 1.0.0')
+        Field('Stonktastic')
+          SingleStyledText('Stonktastic')
+        SingleStyledText(', ')
+        Field('Release 1.0.0')
+          SingleStyledText('Release 1.0.0')
+#### DownExpandingContainer('footer')
+  StaticGroupedFlowables()
+    Footer('8		Chapter 4.  Stonktastic Flask')
+         > (0,0,0,0,2) footer
+           (0,0,0,0,1) body
+      MixedStyledText('8		Chapter 4.  Stonktastic Flask')
+        Field('8')
+          SingleStyledText('8')
+        Tab('	')
+        Tab('	')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+        Field('4')
+          SingleStyledText('5')
+        SingleStyledText('.  ')
+        Field('Stonktastic Flask')
+          SingleStyledText('Stonktastic Machine Learning')
+---------------------------------- page 9 ----------------------------------
+#### FootnoteContainer('footnotes')
+  StaticGroupedFlowables()
+#### DownExpandingContainer('floats')
+  StaticGroupedFlowables()
+#### FlowablesContainer('chapter title')
+  Paragraph('Chapter 5', style='body matter chapter label')
+       > (0,0,1,0,2) body matter chapter label
+         (0,0,0,0,2) body
+    MixedStyledText('Chapter 5')
+      MixedStyledText('Chapter ')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+      Field('5', style='number')
+           > (0,0,2,0,3) body matter chapter number
+        SingleStyledText('5')
+  Paragraph('Stonktastic Machine Learning', style='body matter chapter title')
+       > (0,0,1,0,2) body matter chapter title
+         (0,0,0,0,2) body
+    Field('Stonktastic Machine Learning')
+      SingleStyledText('Stonktastic Machine Learning')
+  Paragraph('Chapter 5', style='body matter chapter label')
+       > (0,0,1,0,2) body matter chapter label
+         (0,0,0,0,2) body
+    MixedStyledText('Chapter 5')
+      MixedStyledText('Chapter ')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+      Field('5', style='number')
+           > (0,0,2,0,3) body matter chapter number
+        SingleStyledText('5')
+#### ChainedContainer('column1')
+  (continued) StaticGroupedFlowables()
+    (continued) DocumentTree()
+      Section(id='stonktastic-machine-learning')   /Users/aevear/Documents/Github/Stonkcastic/newStonk/docs/source/index.rst:28 <section>
+           > (0,0,0,1,2) chapter
+#### DownExpandingContainer('footer')
+  StaticGroupedFlowables()
+    Footer('		9')
+         > (0,0,0,0,2) footer
+           (0,0,0,0,1) body
+      MixedStyledText('		9')
+        Tab('	')
+        Tab('	')
+        Field('9')
+          SingleStyledText('9')
+---------------------------------- page 10 ----------------------------------
+#### FootnoteContainer('footnotes')
+  StaticGroupedFlowables()
+#### DownExpandingContainer('floats')
+  StaticGroupedFlowables()
+#### ChainedContainer('column1')
+  (continued) StaticGroupedFlowables()
+    (continued) DocumentTree()
+#### UpExpandingContainer('header')
+  StaticGroupedFlowables()
+    Header('Stonktastic, Release 1.0.0')
+         > (0,0,0,0,2) header
+           (0,0,0,0,1) body
+      MixedStyledText('Stonktastic, Release 1.0.0')
+        Field('Stonktastic')
+          SingleStyledText('Stonktastic')
+        SingleStyledText(', ')
+        Field('Release 1.0.0')
+          SingleStyledText('Release 1.0.0')
+#### DownExpandingContainer('footer')
+  StaticGroupedFlowables()
+    Footer('10		Chapter 5.  Stonktastic Mach...')
+         > (0,0,0,0,2) footer
+           (0,0,0,0,1) body
+      MixedStyledText('10		Chapter 5.  Stonktastic Mach...')
+        Field('10')
+          SingleStyledText('10')
+        Tab('	')
+        Tab('	')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+        Field('5')
+          SingleStyledText('6')
+        SingleStyledText('.  ')
+        Field('Stonktastic Machine Learning')
+          SingleStyledText('Stonktastic Optimization')
+---------------------------------- page 11 ----------------------------------
+#### FootnoteContainer('footnotes')
+  StaticGroupedFlowables()
+#### DownExpandingContainer('floats')
+  StaticGroupedFlowables()
+#### FlowablesContainer('chapter title')
+  Paragraph('Chapter 6', style='body matter chapter label')
+       > (0,0,1,0,2) body matter chapter label
+         (0,0,0,0,2) body
+    MixedStyledText('Chapter 6')
+      MixedStyledText('Chapter ')
+        StringField('Chapter')
+          SingleStyledText('Chapter')
+        SingleStyledText(' ')
+      Field('6', style='number')
+           > (0,0,2,0,3) body matter chapter number
+        SingleStyledText('6')
+  Paragraph('Stonktastic Optimization', style='body matter chapter title')
+       > (0,0,1,0,2) body matter chapter title
+         (0,0,0,0,2) body
+    Field('Stonktastic Optimization')
+      SingleStyledText('Stonktastic Optimization')
+#### ChainedContainer('column1')
+  (continued) StaticGroupedFlowables()
+    (continued) DocumentTree()
+      Section(id='stonktastic-optimization')   /Users/aevear/Documents/Github/Stonkcastic/newStonk/docs/source/index.rst:33 <section>
+           > (0,0,0,1,2) chapter
+#### DownExpandingContainer('footer')
+  StaticGroupedFlowables()
+    Footer('		11')
+         > (0,0,0,0,2) footer
+           (0,0,0,0,1) body
+      MixedStyledText('		11')
+        Tab('	')
+        Tab('	')
+        Field('11')
+          SingleStyledText('11')
+---------------------------------- page 13 ----------------------------------
+#### FootnoteContainer('footnotes')
+  StaticGroupedFlowables()
+#### DownExpandingContainer('floats')
+  StaticGroupedFlowables()
+#### ChainedContainer('column1')
+  StaticGroupedFlowables()
+    StaticGroupedFlowables()
+#### ChainedContainer('column2')
+  StaticGroupedFlowables()
+    StaticGroupedFlowables()
+#### DownExpandingContainer('footer')
+  StaticGroupedFlowables()
+    Footer('		13')
+         > (0,0,0,0,2) footer
+           (0,0,0,0,1) body
+      MixedStyledText('		13')
+        Tab('	')
+        Tab('	')
+        Field('13')
+          SingleStyledText('13')
