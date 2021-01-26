@@ -84,17 +84,16 @@ def prepareMemoryData(stonk, columnValues):
 
     xColumnValues = list(columnValues)
     xColumnValues.remove("Date")
-    df, date = df[xColumnValues], df["Date"].values.tolist()
+    xDF, yDF, date = df[xColumnValues], df["Close"], df["Date"].values.tolist()
 
     scaler.fit_transform(df)
     filename = modelPaths["rmmMemoryModels"] + f"/{stonk}Scaler.save"
     pickle.dump(scaler, open(filename, "wb"))
 
     xValueList, yValueList = [], []
-    lookBackTime = memLookbackTime
-    for i in range(lookBackTime, len(df)):
-        xValueList.append(df.iloc[i - lookBackTime : i])
-        yValueList.append(df.iloc[i])
+    for i in range(memLookbackTime, len(df)):
+        xValueList.append(xDF.iloc[i - memLookbackTime : i])
+        yValueList.append(yDF.iloc[i])
 
     return xValueList, yValueList, date[1:]
 
