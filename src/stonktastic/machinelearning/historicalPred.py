@@ -140,6 +140,6 @@ def runHistory():
     """
     Runs each of the models through history.
     """
-    # polyRegHistory()
+    polyRegHistory()
     memHistory()
-    # ranForHistory()
+    ranForHistory()
