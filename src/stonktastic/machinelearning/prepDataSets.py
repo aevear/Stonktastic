@@ -96,6 +96,7 @@ def prepareMemoryData(stonk, columnValues):
 
     xColumnValues = list(columnValues)
     xColumnValues.remove("Date")
+
     date = df['Date'].values.tolist()
     df = df.drop('Date', axis=1)
 
@@ -103,6 +104,8 @@ def prepareMemoryData(stonk, columnValues):
 
     train = scaler.fit_transform(train)
     test = scaler.transform(test)
+
+    xDF, yDF, date = df[xColumnValues], df["Close"], df["Date"].values.tolist()
 
     filename = modelPaths["rmmMemoryModels"] + f"/{stonk}Scaler.save"
     pickle.dump(scaler, open(filename, "wb"))
@@ -112,6 +115,11 @@ def prepareMemoryData(stonk, columnValues):
 
     xTrain, yTrain = create_dataset(train, df)
     xTest, yTest = create_dataset(test, df)
+
+    xValueList, yValueList = [], []
+    for i in range(memLookbackTime, len(df)):
+        xValueList.append(xDF.iloc[i - memLookbackTime : i])
+        yValueList.append(yDF.iloc[i])
 
     print(len(xTrain), len(yTrain))
     print(len(xTest), len(yTest))
@@ -161,7 +169,3 @@ def prepareRanForData(stonk, columnValues):
     xValueList.drop(xValueList.head(1).index, inplace=True)
 
     return xValueList, yValueList[:-1], date[1:]
-
-
-# To do tomorrow: move from prepdata the historical to historical and use fit_transform to predict, as well as try using xTest
-# https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/
