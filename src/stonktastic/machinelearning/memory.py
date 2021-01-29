@@ -1,6 +1,8 @@
-"""
+'''
 test
-"""
+'''
+
+from csv import reader
 
 import warnings
 
@@ -11,6 +13,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.python.keras.layers import LSTM, Dense, Dropout
 from tensorflow.python.keras.models import Sequential
+from keras.callbacks import EarlyStopping
+import keras.backend as K
 
 from stonktastic.config.config import (
     memBatchSize,
@@ -49,22 +53,13 @@ def standardizeResults(value):
     else:
         return value
 
+def soft_acc(y_true, y_pred):
+    return K.mean(K.equal(K.round(y_true), K.round(y_pred)))
 
-def runMemory(X, y, date):
+def runMemory(xTrain, yTrain):
     """
     test
     """
-    xTrain, xTest, yTrain, yTest = train_test_split(X, y, test_size=0.2, random_state=4)
-    xTrain, xTest, yTrain, yTest = (
-        np.array(xTrain),
-        np.array(xTest),
-        np.array(yTrain),
-        np.array(yTest),
-    )
-
-    xTrain = np.reshape(
-        xTrain, (xTrain.shape[0], xTrain.shape[1], len(memVariables) - 1)
-    )  # set last number to # of features
 
     model = Sequential()
     # Layer 1
@@ -78,24 +73,28 @@ def runMemory(X, y, date):
     )
     model.add(Dropout(0.2))
     # Layer 2
-    model.add(
-        LSTM(units=50, kernel_initializer="glorot_uniform", return_sequences=True)
-    )
+    model.add(LSTM(units=50, kernel_initializer='glorot_uniform', return_sequences=True))
     model.add(Dropout(0.2))
     # Layer 3
-    model.add(LSTM(units=50, kernel_initializer="glorot_uniform"))
+    model.add(LSTM(units=50, kernel_initializer='glorot_uniform'))
     model.add(Dropout(0.2))
 
-    model.add(Dense(yTrain.shape[1]))
+    model.add(Dense(xTrain.shape[2]))
 
-    model.compile(loss=memLoss, optimizer=memOptimizer)
+    model.compile(loss=memLoss, optimizer=memOptimizer, metrics=[soft_acc])
 
-    model.fit(xTrain, yTrain, epochs=memEpochs, batch_size=memBatchSize)
+    return model, xTrain, yTrain
+
+def runFitAccuracy(model, xTrain, yTrain, xTest, yTest):
+
+    epochCallbacks = [EarlyStopping(monitor='val_loss', patience=20, mode='min', verbose=1, min_delta=0.0001)]
+
+    model.fit(xTrain, yTrain, epochs=memEpochs, batch_size=memBatchSize,
+              validation_split=0.2, callbacks=epochCallbacks)
 
     accuracy = model.evaluate(xTest, yTest, batch_size=memBatchSize)
 
     return (model, accuracy)
-
 
 def memoryMain():
     """
@@ -109,20 +108,32 @@ def memoryMain():
 
     """
 
+    columnValues = memVariables
+
     for stonk in nameList:
+        print(stonk)
 
-        X, y, Date = prepareMemoryData(stonk, memVariables)
+        xTrain, yTrain, xTest, yTest, Date = prepareMemoryData(stonk, columnValues)
 
-        model, results = runMemory(X, y, Date)
+        model, xTrain, yTrain = runMemory(xTrain, yTrain)
+
+        model, results = runFitAccuracy(model, xTrain, yTrain, xTest, yTest)
+
+        print(results)
 
         model_json = model.to_json()
-        modelLocation = modelPaths["rmmMemoryModels"]
+        modelLocation = modelPaths['rmmMemoryModels']
 
         with open(modelLocation + f"/{stonk}mem.json", "w") as json_file:
             json_file.write(model_json)
 
         model.save_weights(modelLocation + f"/{stonk}weight.h5")
 
-        updateCalculationsRegistry(stonk, "memoryScore", standardizeResults(results))
+        updateCalculationsRegistry(stonk, "memoryScore", standardizeResults(results[1]))
+        print(f"{stonk} | Memory : {standardizeResults(results[1])}")
 
-        print(f"{stonk} | Memory : {standardizeResults(results)}")
+
+
+
+
+# |Close|SAR|RSI|CCI|MACDHist|BBUpperBand|BBMiddleBand|BBLowerBand|EMA|Chaikin|StochK|StochD|WILLR|Date

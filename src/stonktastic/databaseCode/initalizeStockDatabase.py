@@ -342,6 +342,8 @@ def populateStageTable():
             ],
         )
 
+        df = df.ffill()
+
         df["SAR"] = talib.SAR(df["High"], df["Low"], acceleration=0.02, maximum=0.2)
         df["RSI"] = talib.RSI(df["Close"], RSILookbackTime)
         df["CCI"] = talib.CCI(df["High"], df["Low"], df["Close"])
@@ -536,15 +538,19 @@ def performInitialCalculations():
     """
     Generates the *Standard Deviation* value for each stock before storing it in the *Calculations Registry* table.
     """
+    nameListGen()
 
     for symbol in nameList:
 
+        print(symbol)
         codes = pullDataRegistry(symbol, "Low", "High")
         values = []
 
         for k in codes:
             values.append([k[0], k[1]])
+        # print('This is values',values)
         standardDeviation = np.std(values)
+        print(standardDeviation)
 
         perm = permFinder(symbol)
 
@@ -573,15 +579,14 @@ def initializeStockDatabase():
         Initalized and fleshed out database with all the basic information and indicators loaded into the db
     """
     # Database initialization
+    # obtainTickerSP500()
     initializeExchangeRegistry()
     initializeStockRegistry()
     initializeIDRegistry()
+    populateIDRegistry()
     initializeStageTable()
     initializeDataRegistry()
-    initializeCalculationsRegistry()
-
-    # Calcuations and Table Population
-    populateIDRegistry()
     populateStageTable()
     loadDataRegistry()
+    initializeCalculationsRegistry()
     performInitialCalculations()

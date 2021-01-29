@@ -6,9 +6,14 @@
 import pickle
 
 import pandas as pd
+import numpy as np
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
 
-from stonktastic.config.config import memLookbackTime
+from stonktastic.config.config import (
+    memLookbackTime,
+    memVariables,
+)
 from stonktastic.config.paths import modelPaths
 from stonktastic.databaseCode.sqlQueries import pullDataRegistry
 
@@ -52,6 +57,13 @@ def preparePolyRegData(stonk, columnValues):
     return xValueList, yValueList[:-1], date[1:]
 
 
+def create_dataset(data, df):
+    xData, yData = [], []
+    for i in range(memLookbackTime, len(data)):
+        xData.append(data[i-memLookbackTime:i, :])
+        yData.append(data[i, 0])
+    return np.array(xData), np.array(yData)
+
 def prepareMemoryData(stonk, columnValues):
     """
     Prepares the data for *LTSM* based on the stock ticker and the indicator values passed. First it pulls from the SQL database before procesing the data and loading it into two sepearte dataframes for the X and Y values.
@@ -84,19 +96,31 @@ def prepareMemoryData(stonk, columnValues):
 
     xColumnValues = list(columnValues)
     xColumnValues.remove("Date")
-    xDF, yDF, date = df[xColumnValues], df["Close"], df["Date"].values.tolist()
+    date = df['Date'].values.tolist()
+    df = df.drop('Date', axis=1)
 
-    scaler.fit_transform(df)
+    train, test = train_test_split(df, test_size=0.2, shuffle=False)
+
+    train = scaler.fit_transform(train)
+    test = scaler.transform(test)
+
     filename = modelPaths["rmmMemoryModels"] + f"/{stonk}Scaler.save"
     pickle.dump(scaler, open(filename, "wb"))
 
-    xValueList, yValueList = [], []
-    for i in range(memLookbackTime, len(df)):
-        xValueList.append(xDF.iloc[i - memLookbackTime : i])
-        yValueList.append(yDF.iloc[i])
+    train = np.array(train)
+    test = np.array(test)
 
-    return xValueList, yValueList, date[1:]
+    xTrain, yTrain = create_dataset(train, df)
+    xTest, yTest = create_dataset(test, df)
 
+    print(len(xTrain), len(yTrain))
+    print(len(xTest), len(yTest))
+
+    xTrain = np.reshape(
+        xTrain, (xTrain.shape[0], xTrain.shape[1], len(memVariables) - 1)
+    )
+
+    return xTrain, yTrain, xTest, yTest, date[1:]
 
 def prepareRanForData(stonk, columnValues):
     """
@@ -137,3 +161,4 @@ def prepareRanForData(stonk, columnValues):
     xValueList.drop(xValueList.head(1).index, inplace=True)
 
     return xValueList, yValueList[:-1], date[1:]
+

@@ -7,10 +7,16 @@ import pickle
 
 import joblib
 import numpy as np
+import pandas as pd
+from numpy import newaxis
+from sklearn.model_selection import train_test_split
+
 from sklearn.preprocessing import MinMaxScaler
+import tensorflow as tf
 from tensorflow.keras.models import model_from_json
 
 from stonktastic.config.config import (
+    memLookbackTime,
     memLoss,
     memOptimizer,
     memVariables,
@@ -24,6 +30,9 @@ from stonktastic.machinelearning.prepDataSets import (
     preparePolyRegData,
     prepareRanForData,
 )
+
+import csv
+from csv import reader
 
 
 def polyRegHistory():
@@ -48,6 +57,13 @@ def polyRegHistory():
         print(f"Historical Predicitons made for Polynomial Regression | {stonk}")
 
 
+
+def using_multiindex(A, columns):
+    shape = A.shape
+    index = pd.MultiIndex.from_product([range(s)for s in shape], names=columns)
+    df = pd.DataFrame({'A': A.flatten()}, index=index).reset_index()
+    return df
+
 def memHistory():
     """
     Goes through and calculates what the model would have predicted for every trade day in the last seven years
@@ -69,21 +85,28 @@ def memHistory():
         filename = modelPaths["rmmMemoryModels"] + f"/{stonk}Scaler.save"
         scaler = joblib.load(filename)
 
-        xValues, _, date = prepareMemoryData(stonk, memVariables)
+        xTrain, _, xTest, _, date = prepareMemoryData(stonk, memVariables)
 
         loadedModel.compile(loss=memLoss, optimizer=memOptimizer, metrics=["accuracy"])
 
-        date = date[-len(xValues) :]
-        xValues = np.array(xValues)
+        totalLength = len(xTrain) + len(xTest)
 
-        results = loadedModel.predict(xValues)
-        predictions = scaler.inverse_transform(results)
+        date = date[-totalLength :]
+
+        loadedModel.compile(loss=memLoss, optimizer=memOptimizer)
+
+        trainPredict = loadedModel.predict(xTrain)
+        testPredict = loadedModel.predict(xTest)
+
+        trainPredict = scaler.inverse_transform(trainPredict)
+        testPredict = scaler.inverse_transform(testPredict)
+
+        predictions = np.concatenate((testPredict,trainPredict),axis=0)
 
         for idx, _ in enumerate(predictions):
-            pred = float(predictions[idx][0])
+            pred = float(predictions[idx][4])
             updateDataRegistry(stonk, date[idx], "memPred", pred)
         print(f"Historical Predicitons made for RNN LTSM Memory | {stonk}")
-
 
 def ranForHistory():
     """
@@ -103,7 +126,6 @@ def ranForHistory():
 
         for idx, _ in enumerate(date):
             updateDataRegistry(stonk, date[idx], "ranForPred", results[idx])
-            updateDataRegistry(stonk, date[idx], "memPred", results[idx])
 
         print(f"Historical Predicitons made for Random Forest | {stonk}")
 
@@ -113,5 +135,5 @@ def runHistory():
     Runs each of the models through history.
     """
     polyRegHistory()
-    # MemHistory()
+    memHistory()
     ranForHistory()
