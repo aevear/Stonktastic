@@ -43,10 +43,18 @@ def polyRegHistory():
 
         results = loadedModel.predict(xValues)
 
-        for idx, _ in enumerate(date):
+        for idx, _ in enumerate(date[:-1]):
             updateDataRegistry(stonk, date[idx], "polyRegPred", results[idx])
         print(f"Historical Predicitons made for Polynomial Regression | {stonk}")
 
+<<<<<<< Updated upstream
+=======
+def using_multiindex(A, columns):
+    shape = A.shape
+    index = pd.MultiIndex.from_product([range(s)for s in shape], names=columns)
+    df = pd.DataFrame({'A': A.flatten()}, index=index).reset_index()
+    return df
+>>>>>>> Stashed changes
 
 def memHistory():
     """
@@ -56,7 +64,6 @@ def memHistory():
         Updated SQL database with a prediction for each day in the last seven years.
 
     """
-    scaler = MinMaxScaler(feature_range=(0, 1))
 
     for stonk in nameList:
         jsonFilePath = open(f"{modelPaths['rmmMemoryModels']}/{stonk}mem.json", "r")
@@ -71,10 +78,14 @@ def memHistory():
 
         xValues, _, date = prepareMemoryData(stonk, memVariables)
 
+<<<<<<< Updated upstream
         loadedModel.compile(loss=memLoss, optimizer=memOptimizer, metrics=["accuracy"])
 
         date = date[-len(xValues) :]
         xValues = np.array(xValues)
+=======
+        loadedModel.compile(loss=memLoss, optimizer=memOptimizer)
+>>>>>>> Stashed changes
 
         results = loadedModel.predict(xValues)
         predictions = scaler.inverse_transform(results)
@@ -101,9 +112,8 @@ def ranForHistory():
         xValues, _, date = prepareRanForData(stonk, ranForVariables)
         results = loadedModel.predict(xValues)
 
-        for idx, _ in enumerate(date):
+        for idx, _ in enumerate(date[:-1]):
             updateDataRegistry(stonk, date[idx], "ranForPred", results[idx])
-            updateDataRegistry(stonk, date[idx], "memPred", results[idx])
 
         print(f"Historical Predicitons made for Random Forest | {stonk}")
 

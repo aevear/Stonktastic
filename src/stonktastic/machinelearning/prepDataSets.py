@@ -36,7 +36,7 @@ def preparePolyRegData(stonk, columnValues):
         dataFrameFullData.append(rowData)
 
     df = pd.DataFrame(dataFrameFullData, columns=columnValues).dropna()
-    df.sort_values(by="Date", ascending=True, inplace=True)
+    df.sort_values(by="Date", ascending=False, inplace=True)
     df = df.reset_index(drop=True)
 
     xColumnValues = list(columnValues)
@@ -49,8 +49,7 @@ def preparePolyRegData(stonk, columnValues):
 
     xValueList.drop(xValueList.head(1).index, inplace=True)
 
-    return xValueList, yValueList[:-1], date[1:]
-
+    return xValueList, yValueList[:-1], date
 
 def prepareMemoryData(stonk, columnValues):
     """
@@ -65,6 +64,7 @@ def prepareMemoryData(stonk, columnValues):
         xValueList (dataframe): Dataframe with the Y values based on Close value offset one day in the future relative to the X values
         date (list) : A list of date values connected to the other two dataframes
     """
+
     scaler = MinMaxScaler(feature_range=(0, 1))
 
     data = pullDataRegistry(stonk, columnValues)
@@ -79,23 +79,36 @@ def prepareMemoryData(stonk, columnValues):
         dataFrameFullData.append(rowData)
 
     df = pd.DataFrame(dataFrameFullData, columns=columnValues).dropna()
-    df.sort_values(by="Date", ascending=True, inplace=True)
+    df.sort_values(by="Date", ascending=False, inplace=True)
     df = df.reset_index(drop=True)
 
     xColumnValues = list(columnValues)
     xColumnValues.remove("Date")
+<<<<<<< Updated upstream
     xDF, yDF, date = df[xColumnValues], df["Close"], df["Date"].values.tolist()
+=======
+    df, date = df[xColumnValues], df["Date"].values.tolist()
+
+    scaledData = pd.DataFrame(scaler.fit_transform(df))
+>>>>>>> Stashed changes
 
     scaler.fit_transform(df)
     filename = modelPaths["rmmMemoryModels"] + f"/{stonk}Scaler.save"
     pickle.dump(scaler, open(filename, "wb"))
 
     xValueList, yValueList = [], []
-    for i in range(memLookbackTime, len(df)):
-        xValueList.append(xDF.iloc[i - memLookbackTime : i])
-        yValueList.append(yDF.iloc[i])
+    lookBackTime = memLookbackTime
+    for i in range(lookBackTime, len(scaledData)):
+        xValueList.append(scaledData.iloc[i - lookBackTime : i])
+        yValueList.append(scaledData.iloc[i])
 
+<<<<<<< Updated upstream
     return xValueList, yValueList, date[1:]
+=======
+    xValueList, yValueList = np.asarray(xValueList).astype('float32'), np.asarray(yValueList).astype('float32')
+
+    return xValueList, yValueList, date
+>>>>>>> Stashed changes
 
 
 def prepareRanForData(stonk, columnValues):
@@ -123,7 +136,7 @@ def prepareRanForData(stonk, columnValues):
         dataFrameFullData.append(rowData)
 
     df = pd.DataFrame(dataFrameFullData, columns=columnValues).dropna()
-    df.sort_values(by="Date", ascending=True, inplace=True)
+    df.sort_values(by="Date", ascending=False, inplace=True)
     df = df.reset_index(drop=True)
 
     xColumnValues = list(columnValues)
@@ -136,4 +149,4 @@ def prepareRanForData(stonk, columnValues):
 
     xValueList.drop(xValueList.head(1).index, inplace=True)
 
-    return xValueList, yValueList[:-1], date[1:]
+    return xValueList, yValueList[:-1], date

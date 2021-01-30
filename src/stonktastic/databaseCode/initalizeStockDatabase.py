@@ -543,7 +543,7 @@ def performInitialCalculations():
         values = []
 
         for k in codes:
-            values.append([k[0], k[1]])
+            values.append([float(k[0]), float(k[1])])
         standardDeviation = np.std(values)
 
         perm = permFinder(symbol)

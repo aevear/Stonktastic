@@ -48,7 +48,6 @@ def simulateYear(df, modelType):
 
     return gains
 
-
 def preformOverallEvalCalculations(estimates):
     """
     Here we generate find the "best model" in terms of profit and save off the yearly profit for each model per stock

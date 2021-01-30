@@ -256,7 +256,6 @@ def pullFullEstimates():
         df = pd.DataFrame(
             data=preDfData, columns=["Close", "Date", "polyPred", "memPred", "ranPred"]
         )
-
         results.update({stonk: df})
 
     return results

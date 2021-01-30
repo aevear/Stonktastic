@@ -8,9 +8,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
 from tensorflow.python.keras.layers import LSTM, Dense, Dropout
 from tensorflow.python.keras.models import Sequential
+<<<<<<< Updated upstream
+=======
+from tensorflow.keras.metrics import RootMeanSquaredError
+>>>>>>> Stashed changes
 
 from stonktastic.config.config import (
     memBatchSize,
@@ -27,6 +30,7 @@ from stonktastic.machinelearning.prepDataSets import prepareMemoryData
 warnings.simplefilter(action="ignore", category=FutureWarning)
 
 
+<<<<<<< Updated upstream
 def standardizeResults(value):
     """
     Preforms *Polynomial Regression* based on the arguments provided.
@@ -55,6 +59,13 @@ def runMemory(X, y, date):
     test
     """
     xTrain, xTest, yTrain, yTest = train_test_split(X, y, test_size=0.2, random_state=4)
+=======
+def runMemory(xValueList, yValueList, date):
+    """
+    test
+    """
+    xTrain, xTest, yTrain, yTest = train_test_split(xValueList, yValueList, test_size=0.2, random_state=4)
+>>>>>>> Stashed changes
     xTrain, xTest, yTrain, yTest = (
         np.array(xTrain),
         np.array(xTest),
@@ -87,10 +98,22 @@ def runMemory(X, y, date):
     model.add(Dropout(0.2))
 
     model.add(Dense(yTrain.shape[1]))
+<<<<<<< Updated upstream
 
     model.compile(loss=memLoss, optimizer=memOptimizer)
 
     model.fit(xTrain, yTrain, epochs=memEpochs, batch_size=memBatchSize)
+=======
+
+    model.compile(loss=memLoss, optimizer=memOptimizer, metrics=['RootMeanSquaredError'])
+
+    model.fit(xTrain, yTrain, epochs=memEpochs, batch_size=memBatchSize)
+
+    #check predicted values
+    #predictions = model.predict(xTest)
+    #Undo scaling
+    #unScaledPred = scaler.inverse_transform(predictions)
+>>>>>>> Stashed changes
 
     accuracy = model.evaluate(xTest, yTest, batch_size=memBatchSize)
 
@@ -110,9 +133,15 @@ def memoryMain():
     """
 
     for stonk in nameList:
+<<<<<<< Updated upstream
 
         X, y, Date = prepareMemoryData(stonk, memVariables)
 
+=======
+
+        X, y, Date = prepareMemoryData(stonk, memVariables)
+
+>>>>>>> Stashed changes
         model, results = runMemory(X, y, Date)
 
         model_json = model.to_json()
@@ -123,6 +152,12 @@ def memoryMain():
 
         model.save_weights(modelLocation + f"/{stonk}weight.h5")
 
+<<<<<<< Updated upstream
         updateCalculationsRegistry(stonk, "memoryScore", standardizeResults(results))
 
         print(f"{stonk} | Memory : {standardizeResults(results)}")
+=======
+        updateCalculationsRegistry(stonk, "memoryScore", results[1])
+
+        print(f"{stonk} | Memory : {results[1]}")
+>>>>>>> Stashed changes

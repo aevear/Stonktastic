@@ -2,14 +2,14 @@ polyVariables|SAR|RSI|BBUpperBand|EMA|StochD|WILLR|Close|Date||||||
 memVariables|Close|SAR|RSI|CCI|MACDHist|BBUpperBand|BBMiddleBand|BBLowerBand|EMA|Chaikin|StochK|StochD|WILLR|Date
 ranForVariables|BBMiddleBand|BBLowerBand|EMA|Chaikin|WILLR|Close|Date|||||||
 RSILookbackTime|14
-maxSQLPull|1764
+maxSQLPull|1500
 maxHistory|252
 polyPolynomial|2
 memLookbackTime|40
 memLoss|mean_squared_error
 memActivation|softmax
 memoptimizer|adam
-memEpochs|1
+memEpochs|2
 memBatchSize|30
 ranForEstimators|10
 stockToOpt|SNP

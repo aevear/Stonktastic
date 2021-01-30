@@ -1,8 +1,24 @@
 Symbol,Security,GICS Sector
 XOM,Exxon Mobil Corp.,Energy
 T,AT&T Inc.,Communication Services
-AMCR,Amcor plc,Materials
 UPS,United Parcel Service,Industrials
 MCD,McDonald's Corp.,Consumer Discretionary
 AXP,AmericanExpress Co, Financials
 ^GSPC,SNP Real Time Price, Mutual Fund
+AMD,Advanced Micro Devices Inc,Information Technology
+KMX,Carmax Inc,Consumer Discretionary
+CL,Colgate-Palmolive,Consumer Staples
+HCA,HCA Healthcare,Health Care
+KMB,Kimberly-Clark,Consumer Staples
+MNST,Monster Beverage,Consumer Staples
+RHI,Robert Half International,Industrials
+ROL,Rollins,Industrials
+TER,Teradyne,Information Technology
+VFC,VF Corporation,Consumer Discretionary
+XEL,Xcel Energy Inc,Utilities
+ZTS,Zoetis,Health Care
+VTR,Ventas Inc,Real Estate
+TJX,TJX Companies Inc.,Apparel Retail
+SNPS,Synopsys Inc.,Application Software
+SBUX,Starbucks Corp.,Restaurants
+ROST,Ross Stores,Apparel Retail
