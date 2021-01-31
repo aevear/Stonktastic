@@ -7,10 +7,16 @@ import pickle
 
 import joblib
 import numpy as np
+import pandas as pd
+from numpy import newaxis
+from sklearn.model_selection import train_test_split
+
 from sklearn.preprocessing import MinMaxScaler
+import tensorflow as tf
 from tensorflow.keras.models import model_from_json
 
 from stonktastic.config.config import (
+    memLookbackTime,
     memLoss,
     memOptimizer,
     memVariables,
@@ -24,6 +30,9 @@ from stonktastic.machinelearning.prepDataSets import (
     preparePolyRegData,
     prepareRanForData,
 )
+
+import csv
+from csv import reader
 
 
 def polyRegHistory():
@@ -47,14 +56,11 @@ def polyRegHistory():
             updateDataRegistry(stonk, date[idx], "polyRegPred", results[idx])
         print(f"Historical Predicitons made for Polynomial Regression | {stonk}")
 
-<<<<<<< Updated upstream
-=======
 def using_multiindex(A, columns):
     shape = A.shape
     index = pd.MultiIndex.from_product([range(s)for s in shape], names=columns)
     df = pd.DataFrame({'A': A.flatten()}, index=index).reset_index()
     return df
->>>>>>> Stashed changes
 
 def memHistory():
     """
@@ -78,14 +84,7 @@ def memHistory():
 
         xValues, _, date = prepareMemoryData(stonk, memVariables)
 
-<<<<<<< Updated upstream
-        loadedModel.compile(loss=memLoss, optimizer=memOptimizer, metrics=["accuracy"])
-
-        date = date[-len(xValues) :]
-        xValues = np.array(xValues)
-=======
         loadedModel.compile(loss=memLoss, optimizer=memOptimizer)
->>>>>>> Stashed changes
 
         results = loadedModel.predict(xValues)
         predictions = scaler.inverse_transform(results)
@@ -94,7 +93,6 @@ def memHistory():
             pred = float(predictions[idx][0])
             updateDataRegistry(stonk, date[idx], "memPred", pred)
         print(f"Historical Predicitons made for RNN LTSM Memory | {stonk}")
-
 
 def ranForHistory():
     """
@@ -123,5 +121,5 @@ def runHistory():
     Runs each of the models through history.
     """
     polyRegHistory()
-    # MemHistory()
+    memHistory()
     ranForHistory()

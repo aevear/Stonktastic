@@ -62,7 +62,7 @@ def main(option):
         ranForMain()
 
     if option == "stats":
-        #runHistory()
+        runHistory()
         overallEval()
 
     if option == "opt":

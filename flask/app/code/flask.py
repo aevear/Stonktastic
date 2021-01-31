@@ -117,7 +117,7 @@ def getDashboardFlaskData():
                     ]
                 )
 
-    stockData = pullDataRegistry("SNP", "Date", "Close")
+    stockData = pullDataRegistry("S&P", "Date", "Close")
 
     snpChartData, dateList, closeList = [], [], []
     for idx, k in enumerate(stockData):

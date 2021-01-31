@@ -9,7 +9,7 @@ memLookbackTime|40
 memLoss|mean_squared_error
 memActivation|softmax
 memoptimizer|adam
-memEpochs|2
+memEpochs|20
 memBatchSize|30
 ranForEstimators|10
 stockToOpt|SNP

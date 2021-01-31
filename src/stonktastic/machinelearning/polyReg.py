@@ -45,7 +45,7 @@ def runPolyReg(xValueList, yValueList, degrees):
     polyreg.fit(xTrain, yTrain)
     yPred = polyreg.predict(xTest)
 
-    results = metrics.r2_score(yTest, yPred)
+    results = metrics.rmse_score(yTest, yPred)
 
     return (polyreg, results)
 

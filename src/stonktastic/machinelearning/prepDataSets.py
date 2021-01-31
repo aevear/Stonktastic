@@ -6,9 +6,14 @@
 import pickle
 
 import pandas as pd
+import numpy as np
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
 
-from stonktastic.config.config import memLookbackTime
+from stonktastic.config.config import (
+    memLookbackTime,
+    memVariables,
+)
 from stonktastic.config.paths import modelPaths
 from stonktastic.databaseCode.sqlQueries import pullDataRegistry
 
@@ -51,6 +56,13 @@ def preparePolyRegData(stonk, columnValues):
 
     return xValueList, yValueList[:-1], date
 
+def create_dataset(data, df):
+    xData, yData = [], []
+    for i in range(memLookbackTime, len(data)):
+        xData.append(data[i-memLookbackTime:i, :])
+        yData.append(data[i, 0])
+    return np.array(xData), np.array(yData)
+
 def prepareMemoryData(stonk, columnValues):
     """
     Prepares the data for *LTSM* based on the stock ticker and the indicator values passed. First it pulls from the SQL database before procesing the data and loading it into two sepearte dataframes for the X and Y values.
@@ -84,15 +96,10 @@ def prepareMemoryData(stonk, columnValues):
 
     xColumnValues = list(columnValues)
     xColumnValues.remove("Date")
-<<<<<<< Updated upstream
-    xDF, yDF, date = df[xColumnValues], df["Close"], df["Date"].values.tolist()
-=======
     df, date = df[xColumnValues], df["Date"].values.tolist()
 
     scaledData = pd.DataFrame(scaler.fit_transform(df))
->>>>>>> Stashed changes
 
-    scaler.fit_transform(df)
     filename = modelPaths["rmmMemoryModels"] + f"/{stonk}Scaler.save"
     pickle.dump(scaler, open(filename, "wb"))
 
@@ -102,13 +109,9 @@ def prepareMemoryData(stonk, columnValues):
         xValueList.append(scaledData.iloc[i - lookBackTime : i])
         yValueList.append(scaledData.iloc[i])
 
-<<<<<<< Updated upstream
-    return xValueList, yValueList, date[1:]
-=======
     xValueList, yValueList = np.asarray(xValueList).astype('float32'), np.asarray(yValueList).astype('float32')
 
     return xValueList, yValueList, date
->>>>>>> Stashed changes
 
 
 def prepareRanForData(stonk, columnValues):
